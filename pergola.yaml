@@ -1,0 +1,19 @@
+version: v1
+
+components:
+- name: deepspect-db
+  docker:
+    image: postgres:13
+  env:
+  - name: POSTGRES_DB
+    value: deepspect
+  - name: POSTGRES_USER
+    config-ref: DEEPSPECT_DBUSER
+  - name: POSTGRES_PASSWORD
+    config-ref: DEEPSPECT_DBPASS
+  storage:
+  - name: pgdata
+    path: /var/lib/postgresql/data
+    size: 2Gi
+  ports:
+  - 5432
